@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+  <title>DCSurvey Log-in</title>
+  <link href="stylesheets/mystyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="login_box">
+    <div id="login_tab" class="active">
+      <ul>
+        <li><a href="#">DCSurvey 계정으로 로그인</a></li>
+        <li><a href="#">Facebook 계정으로 로그인</a></li>
+      </ul>
+    </div>
+    <div class="login_form active">
+      <form action="#" method="{post/get}">
+        <h1>Log-in</h1>
+        <div class="login_con">
+          <span>DCSurvey 아이디: </span>
+          <input type="text" name="id" value="아이디"/>
+        </div>
+        <div class="login_con">
+          <span>비밀번호: </span>
+          <input type="password" name="pwd" value="비밀번호"/>
+        </div>
+        <input type="submit" name="submit" value="로그인"/>
+      </form>
+    </div>
+    <div class="login_form active">
+      <form action="#" method="{post/get}">
+        <h1>Log-in</h1>
+        <div class="login_con">
+          <span>Facebook 계정: </span>
+          <input type="text" name="id" value="아이디"/>
+        </div>
+        <div class="login_con">
+          <span>비밀번호: </span>
+          <input type="password" name="pwd" value="비밀번호"/>
+        </div>
+        <input type="submit" name="submit" value="로그인"/>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

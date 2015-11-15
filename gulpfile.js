@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
-var env = require('gulp-env');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -29,11 +28,14 @@ gulp.task('watch', function() {
 gulp.task('nodemon', function (cb) {
   var started = false;
   return nodemon({
-    script: 'bin/www',
-    ext: 'js jade html',
-    env: {DEBUG: "guestbook:server"}
-  }).on('restart', function () {
-    console.log('restarted!');
+    script: 'bin/www'
+  }).on('start', function () {
+    // to avoid nodemon being started multiple times
+    // thanks @matthisk
+    if (!started) {
+      cb();
+      started = true;
+    }
   });
 });
 

@@ -4,10 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-
-
-
+var session = require('express-session');
+//var methodOverride = require('method-override');
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -30,6 +29,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+//app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
+}));
+app.use(flash());
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(path.join(__dirname, '/bower_components')));
 

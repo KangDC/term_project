@@ -1,6 +1,9 @@
 var express = require('express'),
+    survey = require('./survey'),
     User = require('../models/User');
 var router = express.Router();
+
+router.use('/survey', survey);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

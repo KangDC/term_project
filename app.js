@@ -52,8 +52,9 @@ app.use(passport.session());
 configAuth(passport);
 
 app.use(function(req, res, next) {
-  console.log("REQ USER", req.user);
-  res.locals.currentUser = req.user;
+  res.locals.currentUser = req.session.user;
+  //console.log("REQ USER", req.user);
+  //res.locals.currentUser = req.user;
   res.locals.flashMessages = req.flash();
   next();
 });

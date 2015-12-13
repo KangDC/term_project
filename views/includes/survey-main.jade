@@ -1,35 +1,33 @@
-form.form-inline(action='/todos', method='POST', class='todos')
-  .form
-    .main
-      input(type='text', id='task', name='task', placeholder='해야할 일이 무엇인가요?')
-    .sub
-      .form-group
-        input.form-control(type='text', id='category', name='category', placeholder='분류')
-      .form-group
-        select.form-control(name='priority')
-          option(value='1') 중요
-          option(value='2', selected) 보통
-          option(value='3') 사소
-      .form-group
-        input.form-control(type='date', id='deadline', name='deadline')
-  .actions
-      button.btn.btn-primary.btn-lg.btn-block(type='submit') 저장
-
-ul.tasks
-  each task in tasks
-    li.task(data-id='#{task._id}')
-      span.check
-      span.content= task.content
-      if task.category
-        span.label.label-default.category= task.category
-      span.priority(class='p#{task.priority}')
-        case task.priority
-          when 1
-            | 사소
-          when 2
-            | 보통
-          when 3
-            | 중요
-      if task.deadline
-        span.deadline= moment(task.deadline).format('YYYY-MM-DD')
-      
+form(action='/survey', method='POST', class='survey')
+  
+  
+  label(for='survey-title') 설문지 제목
+  input.form-control(type='text', id='survey-title', name='survey-title', placeholder='설문지 제목') 
+  label(for='survey-desc') 설문지 설명
+  input.form-control(type='text', id='survey-desc', name='survey-desc', placeholder='설문지 설명')
+  label(for='endDate') 마감일
+  input.form-control(type='date', id='endDate', name='deadline')
+  
+.qst
+  .qst-type
+    label(for='survey-title') 질문
+    input.form-control(type='text', id='question', name='question', placeholder='질문') 
+    label(for='category') 질문유형
+    select.form-control(name='category')
+      option(value='텍스트', selected) 텍스트
+      option(value='단락 텍스트') 단락 텍스트
+      option(value='객관식') 객관식
+      option(value='확인란') 확인란
+  .qst-body
+  
+button.btn.btn-primary.btn-lg.btn-block(id='srvsbm' type='submit') 저장
+button(id='add') 항목추가
+script.
+  //- #question(type='text/template')
+  //-   form(action='/survey', method='POST', class='survey')
+  $("srvsbm").hide()
+  $("#add").click(function(){
+    var qst = $(".qst:first").clone(true)
+    $('form').append(qst)
+  });
+  
